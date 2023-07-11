@@ -9,22 +9,28 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @Column(name = "game_yaer")
+    private String title;
+    private String genre;
+    @Column(name = "game_year")
     private Integer year;
-    private  String plataform;
+    private  String platforms;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    private Double score;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game() {
     }
 
-    public Game(Long id, String name, Integer year, String plataform, String imgUrl, String shortDescription, String longDescription){
+    public Game(Long id, String title, String genre, Integer year, Double score, String platforms, String imgUrl, String shortDescription, String longDescription){
         this.id = id;
-        this.name = name;
+        this.title = title;
+        this.genre = genre;
         this.year = year;
-        this.plataform = plataform;
+        this.score = score;
+        this.platforms = platforms;
         this.imgUrl = imgUrl;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
@@ -38,12 +44,12 @@ public class Game {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getYear() {
@@ -54,12 +60,20 @@ public class Game {
         this.year = year;
     }
 
-    public String getPlataform() {
-        return plataform;
+    public String getPlatforms() {
+        return platforms;
     }
 
-    public void setPlataform(String plataform) {
-        this.plataform = plataform;
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setPlatforms(String platforms) {
+        this.platforms = platforms;
     }
 
     public String getImgUrl() {
@@ -84,6 +98,14 @@ public class Game {
 
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 
     @Override

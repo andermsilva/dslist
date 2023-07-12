@@ -18,10 +18,18 @@ import java.util.List;
 public class GameListController {
 
     @Autowired
+    GameService gameService;
+    @Autowired
     private GameListService gameListService;
     @GetMapping
     public List<GameListDTO>findAll(){
         List<GameListDTO> result = gameListService.findAll();
+        return result;
+    }
+
+    @GetMapping(value = "/{listId}/games")
+    public List<GameMinDto> findByList(@PathVariable Long listId){
+        List<GameMinDto> result = gameService.findByList(listId);
         return result;
     }
 
